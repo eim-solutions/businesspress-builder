@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap"
     rel="stylesheet">
-    <link rel="text/tailwindcss" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/grapesjs@latest/dist/css/grapes.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/tailwind.config.js"></script>
     
@@ -95,8 +97,12 @@
                         </svg>
                     </a>
                 </li>
-                <li class="">
-                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Navigations</a>
+                <li class="accordion">
+                    <a href="#"
+                        class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block accordion-open">Navigations</a>
+                    <ul class="hidden accordion-close">
+                        <div id="block"></div>
+                    </ul>
                 </li>
                 <li class="">
                     <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Headers</a>
@@ -129,112 +135,120 @@
         </aside>
 
         <!-- Content Box -->
-        <main class="bg-blue-100 p-4 md:flex-1 w-4/6">
-            <div class="flex justify-end gap-2 items-center mb-4">
-                <button
-                    class="rounded-lg bg-green-500 hover:bg-green-600 text-white px-4 py-1 flex gap-2 items-center text-sm mr-4">
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M9.0242 0.1758C9.13668 0.288316 9.19987 0.440901 9.19987 0.6C9.19987 0.759098 9.13668 0.911683 9.0242 1.0242L4.2242 5.8242C4.11168 5.93668 3.9591 5.99987 3.8 5.99987C3.6409 5.99987 3.48832 5.93668 3.3758 5.8242L0.9758 3.4242C0.866505 3.31104 0.806029 3.15948 0.807396 3.00216C0.808763 2.84484 0.871864 2.69435 0.983109 2.58311C1.09435 2.47186 1.24484 2.40876 1.40216 2.4074C1.55948 2.40603 1.71104 2.46651 1.8242 2.5758L3.8 4.5516L8.1758 0.1758C8.28832 0.0633171 8.4409 0.000127792 8.6 0.000127792C8.7591 0.000127792 8.91168 0.0633171 9.0242 0.1758Z"
-                            fill="white" />
-                    </svg>
-                    Save changes
-                </button>
-                <a href="#" class="text-blue-500 flex gap-2 items-center text-sm">Preview in new tab
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12.115 5.67063L3.36188 0.212139C3.13939 0.0742512 2.88688 0.00110465 2.62959 1.24141e-05C2.3723 -0.00107982 2.11925 0.0699204 1.89574 0.205915C1.67375 0.338909 1.4891 0.53281 1.36091 0.76754C1.23273 1.00227 1.16567 1.2693 1.16668 1.54097V12.458C1.16567 12.7296 1.23273 12.9967 1.36091 13.2314C1.4891 13.4661 1.67375 13.66 1.89574 13.793C2.11917 13.9297 2.37242 14.0011 2.62996 14C2.88749 13.9989 3.1402 13.9254 3.36261 13.7868L12.1164 8.3283C12.3345 8.19319 12.5155 7.99934 12.6413 7.76613C12.7671 7.53293 12.8333 7.26856 12.8333 6.99947C12.8333 6.73038 12.7671 6.466 12.6413 6.2328C12.5155 5.9996 12.3345 5.80574 12.1164 5.67063H12.115ZM2.6248 12.458V1.54097L11.3786 6.98702L2.6248 12.458Z"
-                            fill="#1A53E7" />
-                    </svg>
-                </a>
-            </div>
-            <div class="bg-white rounded-lg overflow-hidden h-5/6">
-                <div class="bg-gray-200 flex justify-between gap-2 items-center p-4">
-                    <div>
-                        <input
-                            class="appearance-none rounded shadow-transparent w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="username" type="text" placeholder="new_page.html">
-                    </div>
-                    <div class="flex justify-between gap-4 items-center">
-                        <a href="#">
-                            <svg width="20" height="20" viewBox="0 0 15 15" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M13.5 0H1.5C1.10218 0 0.720644 0.158035 0.43934 0.43934C0.158035 0.720644 0 1.10218 0 1.5V9.75C0 10.1478 0.158035 10.5294 0.43934 10.8107C0.720644 11.092 1.10218 11.25 1.5 11.25H6.75V13.5H4.5C4.30109 13.5 4.11032 13.579 3.96967 13.7197C3.82902 13.8603 3.75 14.0511 3.75 14.25C3.75 14.4489 3.82902 14.6397 3.96967 14.7803C4.11032 14.921 4.30109 15 4.5 15H10.5C10.6989 15 10.8897 14.921 11.0303 14.7803C11.171 14.6397 11.25 14.4489 11.25 14.25C11.25 14.0511 11.171 13.8603 11.0303 13.7197C10.8897 13.579 10.6989 13.5 10.5 13.5H8.25V11.25H13.5C13.8978 11.25 14.2794 11.092 14.5607 10.8107C14.842 10.5294 15 10.1478 15 9.75V1.5C15 1.10218 14.842 0.720644 14.5607 0.43934C14.2794 0.158035 13.8978 0 13.5 0ZM13.5 1.5V6.75H1.5V1.5H13.5ZM1.5 9.75V8.25H13.5V9.75H1.5Z"
-                                    fill="#1A53E7" />
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg width="20" height="20" viewBox="0 0 15 15" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.8472 0H2.15278C1.31021 0 0.625 0.67275 0.625 1.5V13.5C0.625 14.3273 1.31021 15 2.15278 15H12.8472C13.6898 15 14.375 14.3273 14.375 13.5V1.5C14.375 0.67275 13.6898 0 12.8472 0ZM12.8472 13.5H2.15278V1.5L12.8472 1.4985V13.5Z"
-                                    fill="#a3a3a3" />
-                                <path
-                                    d="M6.43896 12.375H8.36854C8.79097 12.375 9.13243 12.0398 9.13243 11.625C9.13243 11.2102 8.79097 10.875 8.36854 10.875H6.43896C6.01653 10.875 5.67507 11.2102 5.67507 11.625C5.67507 12.0398 6.01729 12.375 6.43896 12.375Z"
-                                    fill="#a3a3a3" />
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg width="20" height="20" viewBox="0 0 15 15" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11.5179 0H3.48214C3.0559 0 2.64712 0.158035 2.34572 0.43934C2.04432 0.720644 1.875 1.10218 1.875 1.5V13.5C1.875 13.8978 2.04432 14.2794 2.34572 14.5607C2.64712 14.842 3.0559 15 3.48214 15H11.5179C11.9441 15 12.3529 14.842 12.6543 14.5607C12.9557 14.2794 13.125 13.8978 13.125 13.5V1.5C13.125 1.10218 12.9557 0.720644 12.6543 0.43934C12.3529 0.158035 11.9441 0 11.5179 0ZM3.48214 3.75H11.5179V9.75H3.48214V3.75ZM11.5179 1.5V2.25H3.48214V1.5H11.5179ZM3.48214 13.5V11.25H11.5179V13.5H3.48214Z"
-                                    fill="#a3a3a3" />
-                                <path
-                                    d="M7.90179 12H7.09821C6.99165 12 6.88946 12.0395 6.81411 12.1098C6.73876 12.1802 6.69643 12.2755 6.69643 12.375C6.69643 12.4745 6.73876 12.5698 6.81411 12.6402C6.88946 12.7105 6.99165 12.75 7.09821 12.75H7.90179C8.00835 12.75 8.11054 12.7105 8.18589 12.6402C8.26124 12.5698 8.30357 12.4745 8.30357 12.375C8.30357 12.2755 8.26124 12.1802 8.18589 12.1098C8.11054 12.0395 8.00835 12 7.90179 12Z"
-                                    fill="#a3a3a3" />
-                            </svg>
-                        </a>
-                    </div>
+        <main class="bg-gray-300 p-4 md:flex-1 w-4/6 overflow-auto">
+            <div class="bg-blue-50 px-4 pt-4">
+                <div class="flex justify-end gap-2 items-center mb-4">
+                    <button
+                        class="rounded-lg bg-green-500 hover:bg-green-600 text-white px-4 py-1 flex gap-2 items-center text-sm mr-4">
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9.0242 0.1758C9.13668 0.288316 9.19987 0.440901 9.19987 0.6C9.19987 0.759098 9.13668 0.911683 9.0242 1.0242L4.2242 5.8242C4.11168 5.93668 3.9591 5.99987 3.8 5.99987C3.6409 5.99987 3.48832 5.93668 3.3758 5.8242L0.9758 3.4242C0.866505 3.31104 0.806029 3.15948 0.807396 3.00216C0.808763 2.84484 0.871864 2.69435 0.983109 2.58311C1.09435 2.47186 1.24484 2.40876 1.40216 2.4074C1.55948 2.40603 1.71104 2.46651 1.8242 2.5758L3.8 4.5516L8.1758 0.1758C8.28832 0.0633171 8.4409 0.000127792 8.6 0.000127792C8.7591 0.000127792 8.91168 0.0633171 9.0242 0.1758Z"
+                                fill="white" />
+                        </svg>
+                        Save changes
+                    </button>
+                    <a href="#" class="text-blue-500 flex gap-2 items-center text-sm">Preview in new tab
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.115 5.67063L3.36188 0.212139C3.13939 0.0742512 2.88688 0.00110465 2.62959 1.24141e-05C2.3723 -0.00107982 2.11925 0.0699204 1.89574 0.205915C1.67375 0.338909 1.4891 0.53281 1.36091 0.76754C1.23273 1.00227 1.16567 1.2693 1.16668 1.54097V12.458C1.16567 12.7296 1.23273 12.9967 1.36091 13.2314C1.4891 13.4661 1.67375 13.66 1.89574 13.793C2.11917 13.9297 2.37242 14.0011 2.62996 14C2.88749 13.9989 3.1402 13.9254 3.36261 13.7868L12.1164 8.3283C12.3345 8.19319 12.5155 7.99934 12.6413 7.76613C12.7671 7.53293 12.8333 7.26856 12.8333 6.99947C12.8333 6.73038 12.7671 6.466 12.6413 6.2328C12.5155 5.9996 12.3345 5.80574 12.1164 5.67063H12.115ZM2.6248 12.458V1.54097L11.3786 6.98702L2.6248 12.458Z"
+                                fill="#1A53E7" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="p-4 flex items-center justify-center h-full">
-                    <div class="text-center">
-                        <div class="text-center mb-5">
-                            <img class="mx-auto my-0" src="assets/images/template-logo.png" alt="template-logo" />
-                        </div>
+                <div class="bg-white rounded-lg overflow-hidden h-5/6">
+                    <div class="bg-gray-200 flex justify-between gap-2 items-center p-4">
                         <div>
-                            <div class="font-bold text-xl mb-1">Select the Elements and start Creating!</div>
-                            <div class="font-normal text-gray-400 text-sm mb-4">Create custom page or select from
-                                pre-existing templates</div>
+                            <input
+                                class="appearance-none rounded shadow-transparent w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="username" type="text" placeholder="new_page.html">
                         </div>
-                        <div>
-                            <button
-                                class="rounded-lg bg-blue-700 hover:bg-blue-900 text-white px-4 py-1 flex gap-2 items-center text-sm mx-auto my-0">
-                                Templates
-                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
+                        <div class="flex justify-between gap-4 items-center">
+                            <a href="#" id="custom-desktop">
+                                <svg width="20" height="20" viewBox="0 0 15 15" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M9.0242 0.1758C9.13668 0.288316 9.19987 0.440901 9.19987 0.6C9.19987 0.759098 9.13668 0.911683 9.0242 1.0242L4.2242 5.8242C4.11168 5.93668 3.9591 5.99987 3.8 5.99987C3.6409 5.99987 3.48832 5.93668 3.3758 5.8242L0.9758 3.4242C0.866505 3.31104 0.806029 3.15948 0.807396 3.00216C0.808763 2.84484 0.871864 2.69435 0.983109 2.58311C1.09435 2.47186 1.24484 2.40876 1.40216 2.4074C1.55948 2.40603 1.71104 2.46651 1.8242 2.5758L3.8 4.5516L8.1758 0.1758C8.28832 0.0633171 8.4409 0.000127792 8.6 0.000127792C8.7591 0.000127792 8.91168 0.0633171 9.0242 0.1758Z"
-                                        fill="white" />
+                                    <path
+                                        d="M13.5 0H1.5C1.10218 0 0.720644 0.158035 0.43934 0.43934C0.158035 0.720644 0 1.10218 0 1.5V9.75C0 10.1478 0.158035 10.5294 0.43934 10.8107C0.720644 11.092 1.10218 11.25 1.5 11.25H6.75V13.5H4.5C4.30109 13.5 4.11032 13.579 3.96967 13.7197C3.82902 13.8603 3.75 14.0511 3.75 14.25C3.75 14.4489 3.82902 14.6397 3.96967 14.7803C4.11032 14.921 4.30109 15 4.5 15H10.5C10.6989 15 10.8897 14.921 11.0303 14.7803C11.171 14.6397 11.25 14.4489 11.25 14.25C11.25 14.0511 11.171 13.8603 11.0303 13.7197C10.8897 13.579 10.6989 13.5 10.5 13.5H8.25V11.25H13.5C13.8978 11.25 14.2794 11.092 14.5607 10.8107C14.842 10.5294 15 10.1478 15 9.75V1.5C15 1.10218 14.842 0.720644 14.5607 0.43934C14.2794 0.158035 13.8978 0 13.5 0ZM13.5 1.5V6.75H1.5V1.5H13.5ZM1.5 9.75V8.25H13.5V9.75H1.5Z"
+                                        fill="#1A53E7" />
                                 </svg>
-                            </button>
+                            </a>
+                            <a href="#" id="custom-tablet">
+                                <svg width="20" height="20" viewBox="0 0 15 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.8472 0H2.15278C1.31021 0 0.625 0.67275 0.625 1.5V13.5C0.625 14.3273 1.31021 15 2.15278 15H12.8472C13.6898 15 14.375 14.3273 14.375 13.5V1.5C14.375 0.67275 13.6898 0 12.8472 0ZM12.8472 13.5H2.15278V1.5L12.8472 1.4985V13.5Z"
+                                        fill="#a3a3a3" />
+                                    <path
+                                        d="M6.43896 12.375H8.36854C8.79097 12.375 9.13243 12.0398 9.13243 11.625C9.13243 11.2102 8.79097 10.875 8.36854 10.875H6.43896C6.01653 10.875 5.67507 11.2102 5.67507 11.625C5.67507 12.0398 6.01729 12.375 6.43896 12.375Z"
+                                        fill="#a3a3a3" />
+                                </svg>
+                            </a>
+                            <a href="#" id="custom-mobile">
+                                <svg width="20" height="20" viewBox="0 0 15 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.5179 0H3.48214C3.0559 0 2.64712 0.158035 2.34572 0.43934C2.04432 0.720644 1.875 1.10218 1.875 1.5V13.5C1.875 13.8978 2.04432 14.2794 2.34572 14.5607C2.64712 14.842 3.0559 15 3.48214 15H11.5179C11.9441 15 12.3529 14.842 12.6543 14.5607C12.9557 14.2794 13.125 13.8978 13.125 13.5V1.5C13.125 1.10218 12.9557 0.720644 12.6543 0.43934C12.3529 0.158035 11.9441 0 11.5179 0ZM3.48214 3.75H11.5179V9.75H3.48214V3.75ZM11.5179 1.5V2.25H3.48214V1.5H11.5179ZM3.48214 13.5V11.25H11.5179V13.5H3.48214Z"
+                                        fill="#a3a3a3" />
+                                    <path
+                                        d="M7.90179 12H7.09821C6.99165 12 6.88946 12.0395 6.81411 12.1098C6.73876 12.1802 6.69643 12.2755 6.69643 12.375C6.69643 12.4745 6.73876 12.5698 6.81411 12.6402C6.88946 12.7105 6.99165 12.75 7.09821 12.75H7.90179C8.00835 12.75 8.11054 12.7105 8.18589 12.6402C8.26124 12.5698 8.30357 12.4745 8.30357 12.375C8.30357 12.2755 8.26124 12.1802 8.18589 12.1098C8.11054 12.0395 8.00835 12 7.90179 12Z"
+                                        fill="#a3a3a3" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
+                    <!-- below code is commented mode we will use later -->
+                    <!-- <div class="p-4 flex items-center justify-center h-full">
+                        <div class="text-center">
+                            <div class="text-center mb-5">
+                                <img class="mx-auto my-0" src="assets/images/template-logo.png" alt="template-logo" />
+                            </div>
+                            <div>
+                                <div class="font-bold text-xl mb-1">Select the Elements and start Creating!</div>
+                                <div class="font-normal text-gray-400 text-sm mb-4">Create custom page or select from
+                                    pre-existing templates</div>
+                            </div>
+                            <div>
+                                <button
+                                    class="rounded-lg bg-blue-700 hover:bg-blue-900 text-white px-4 py-1 flex gap-2 items-center text-sm mx-auto my-0">
+                                    Templates
+                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M9.0242 0.1758C9.13668 0.288316 9.19987 0.440901 9.19987 0.6C9.19987 0.759098 9.13668 0.911683 9.0242 1.0242L4.2242 5.8242C4.11168 5.93668 3.9591 5.99987 3.8 5.99987C3.6409 5.99987 3.48832 5.93668 3.3758 5.8242L0.9758 3.4242C0.866505 3.31104 0.806029 3.15948 0.807396 3.00216C0.808763 2.84484 0.871864 2.69435 0.983109 2.58311C1.09435 2.47186 1.24484 2.40876 1.40216 2.4074C1.55948 2.40603 1.71104 2.46651 1.8242 2.5758L3.8 4.5516L8.1758 0.1758C8.28832 0.0633171 8.4409 0.000127792 8.6 0.000127792C8.7591 0.000127792 8.91168 0.0633171 9.0242 0.1758Z"
+                                            fill="white" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
+            </div>
+            <div class="bg-blue-50 px-4 h-screen">
+                <div id="grapesjs-container"></div>
             </div>
         </main>
 
         <!-- Right Sidebar -->
-        <aside class="bg-white pt-0 p-4 w-1/6 border-l border-gray-200">
+        <aside class="bg-white pt-0 w-1/6 border-l border-gray-200">
             <div class="border-b border-gray-200 p-4 font-bold text-xl">
                 Heading (H1)
             </div>
             <div>
-                <div class="max-w-lg mx-auto mt-6">
+                <div class="max-w-lg mx-auto">
                     <!-- Accordion Item 1 -->
-                    <div class="border rounded-lg border-transparent mb-2 accordion">
-                        <div class="flex items-center gap-2 pb-4 cursor-pointer accordion-open">
-                            <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                            <h2 class="text-xs font-semibold">Content</h2>
+                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center gap-2 cursor-pointer accordion-open h-8">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h2 class="text-xs font-semibold">Content</h2>
+                            </div>
                         </div>
-                        <div class="hidden accordion-close">
-                            <textarea class="resize rounded-md bg-blue-100 w-full"></textarea>
+                        <div class="hidden accordion-close mt-3">
+                            <textarea class="resize rounded-md bg-blue-100 w-full text-sky-600"></textarea>
                             <a href="#" class="text-blue-500 flex gap-1 items-center text-xs mt-1">
                                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -246,31 +260,278 @@
                                         fill="#6F8BC2" />
                                 </svg> AI Writer
                             </a>
+                            <div>
+                                <!-- Modal toggle -->
+                                <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                                    class="rounded-md w-full bg-blue-700 hover:bg-blue-900 text-white px-4 py-2 gap-2 text-sm mb-2">
+                                    Change image
+                                </button>
+                                <div class="bg-blue-100 p-2 rounded-md flex items-center gap-2">
+                                    <div class="w-2/6">
+                                        <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                            alt="template-logo" />
+                                    </div>
+                                    <div>
+                                        <div class="text-sm">Image_name.jpg</div>
+                                        <div class="text-xs text-blue-900">Image description</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Accordion Item 2 -->
-                    <div class="border rounded-lg border-transparent mb-2 accordion">
-                        <div class="flex items-center gap-2 pb-4 cursor-pointer accordion-open">
-                            <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                            <h2 class="text-xs font-semibold">Classes</h2>
+                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-open h-8">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h2 class="text-xs font-semibold">
+                                    Anchor
+                                </h2>
+                            </div>
+                            </button>
                         </div>
-                        <div class="hidden accordion-close">
+                        <div class="hidden accordion-close mt-3">
                             <input
-                                class="appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight bg-blue-100 w-full focus:outline-none focus:shadow-outline"
+                                class="appearance-none rounded w-full py-2 px-3 text-sky-600 leading-tight bg-blue-100 w-full focus:outline-none focus:shadow-outline placeholder:text-sky-600"
+                                id="username" type="text" placeholder="#">
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-open h-8">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h2 class="text-xs font-semibold">
+                                    Link settings
+                                </h2>
+                            </div>
+                            </button>
+                        </div>
+                        <div class="hidden accordion-close mt-3">
+                            <div class="text-xs text-blue-700 mb-3">Open in a new page (_blank)</div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 4 -->
+                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-open h-8">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h2 class="text-xs font-semibold">
+                                    Visibility settings
+                                </h2>
+                            </div>
+                            </button>
+                        </div>
+                        <div class="hidden accordion-close mt-3">
+                            <div class="text-xs text-blue-700 mb-3">Hide | Show element</div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 5 -->
+                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-open h-8">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h2 class="text-xs font-semibold">
+                                    Classes
+                                </h2>
+                            </div>
+                            <button
+                                class="bg-white hover:border-sky-900 text-gray-800 text-sm border border-sky-600 rounded py-1 px-2 rounded inline-flex items-center">
+                                <svg class="fill-current" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.86225 5.89496e-06H6.78116C6.54935 -0.00060127 6.31971 0.0456996 6.10556 0.136228C5.89141 0.226757 5.69698 0.359715 5.53355 0.527406L5.11768 0.950405C5.06299 1.00619 5.0196 1.07242 4.99001 1.14531C4.96041 1.21819 4.94517 1.29631 4.94517 1.37521C4.94517 1.53454 5.00723 1.68734 5.11768 1.80001C5.22813 1.91267 5.37793 1.97596 5.53414 1.97596C5.69034 1.97596 5.84014 1.91267 5.9506 1.80001L6.36529 1.37641C6.47581 1.26415 6.6252 1.20079 6.78116 1.20001H9.82343L9.86225 8.4C9.70624 8.4 9.55663 8.46322 9.44631 8.57574C9.336 8.68826 9.27403 8.84087 9.27403 9C9.27403 9.15913 9.336 9.31174 9.44631 9.42427C9.55663 9.53679 9.70624 9.6 9.86225 9.6C10.169 9.59432 10.461 9.46481 10.6742 9.23986C10.8875 9.01491 11.0046 8.71288 10.9999 8.4V1.20001C11.0046 0.887122 10.8875 0.585097 10.6742 0.360148C10.461 0.1352 10.169 0.00568715 9.86225 5.89496e-06Z"
+                                        fill="#6F8BC2" />
+                                    <path
+                                        d="M7.50937 2.4H4.42887C4.19695 2.39925 3.96719 2.44548 3.75292 2.53602C3.53865 2.62655 3.34414 2.75959 3.18067 2.9274L1.51719 4.6242C1.35267 4.79095 1.22225 4.98935 1.13349 5.20791C1.04473 5.42647 0.999409 5.66084 1.00015 5.8974V10.8C0.995267 11.1128 1.11224 11.4149 1.3254 11.6398C1.53856 11.8648 1.8305 11.9943 2.13717 12H7.50937C7.8161 11.9943 8.1081 11.8648 8.32135 11.6399C8.53461 11.4149 8.65171 11.1129 8.64699 10.8V3.6C8.65171 3.28712 8.53461 2.9851 8.32135 2.76015C8.1081 2.5352 7.8161 2.40569 7.50937 2.4ZM3.94124 3.8484V5.4H2.42011L3.94124 3.8484ZM2.17658 10.8V6.6H3.94124C4.25325 6.6 4.55248 6.47357 4.77311 6.24853C4.99373 6.02349 5.11768 5.71826 5.11768 5.4V3.5964L7.46702 3.5844C7.46992 3.58904 7.47116 3.59455 7.47055 3.6L7.50937 10.8H2.17658Z"
+                                        fill="#6F8BC2" />
+                                </svg>
+                                <span>copy</span>
+                            </button>
+                        </div>
+                        <div class="hidden accordion-close mt-3">
+                            <input
+                                class="appearance-none rounded w-full py-2 px-3 text-sky-600 leading-tight bg-blue-100 w-full focus:outline-none focus:shadow-outline placeholder:text-sky-600"
                                 id="username" type="text" placeholder="Add new class">
                             <div class="mt-4">
                                 <ul>
                                     <li class="inline-block">
                                         <a href="#"
-                                            class="px-3 py-2 text-sm text-white bg-blue-900 rounded-full inline-block">Navigations</a>
+                                            class="px-2 py-1 text-xs text-white bg-sky-700 rounded-full inline-block">Navigations</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a href="#"
+                                            class="px-2 py-1 text-xs text-white bg-sky-700 rounded-full inline-block">Navigations</a>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main modal -->
+                    <div id="defaultModal" tabindex="-1" aria-hidden="true"
+                        class="fixed top-2/4 left-2/4 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-2xl max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div class="flex items-start justify-between p-4">
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                            Select or upload a new image
+                                        </h3>
+                                        <div class="font-normal text-sm text-gray-500">
+                                            You can find previously uploaded files under the All Files tab.
+                                        </div>
+                                    </div>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-hide="defaultModal">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="p-6 space-y-6 bg-blue-50">
+                                    <div class="overflow-auto min-h-[300px] h-[40vh] overflow-auto">
+                                        <!-- <div class="flex items-center justify-center flex-wrap gap-3">
+                                            <div class="w-[140px] text-center">
+                                                <div class="text-center mb-3 rounded-lg overflow-hidden">
+                                                    <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                                        alt="template-logo" />
+                                                </div>
+                                                <div class="text-xs text-blue-500">
+                                                    image_name.jpg
+                                                </div>
+                                            </div>
+                                            <div class="w-[140px] text-center">
+                                                <div class="text-center mb-3 rounded-lg overflow-hidden">
+                                                    <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                                        alt="template-logo" />
+                                                </div>
+                                                <div class="text-xs text-blue-500">
+                                                    image_name.jpg
+                                                </div>
+                                            </div>
+                                            <div class="w-[140px] text-center">
+                                                <div class="text-center mb-3 rounded-lg overflow-hidden">
+                                                    <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                                        alt="template-logo" />
+                                                </div>
+                                                <div class="text-xs text-blue-500">
+                                                    image_name.jpg
+                                                </div>
+                                            </div>
+                                            <div class="w-[140px] text-center">
+                                                <div class="text-center mb-3 rounded-lg overflow-hidden">
+                                                    <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                                        alt="template-logo" />
+                                                </div>
+                                                <div class="text-xs text-blue-500">
+                                                    image_name.jpg
+                                                </div>
+                                            </div>
+                                            <div class="w-[140px] text-center">
+                                                <div class="text-center mb-3 rounded-lg overflow-hidden">
+                                                    <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                                        alt="template-logo" />
+                                                </div>
+                                                <div class="text-xs text-blue-500">
+                                                    image_name.jpg
+                                                </div>
+                                            </div>
+                                            <div class="w-[140px] text-center">
+                                                <div class="text-center mb-3 rounded-lg overflow-hidden">
+                                                    <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                                        alt="template-logo" />
+                                                </div>
+                                                <div class="text-xs text-blue-500">
+                                                    image_name.jpg
+                                                </div>
+                                            </div>
+                                            <div class="w-[140px] text-center">
+                                                <div class="text-center mb-3 rounded-lg overflow-hidden">
+                                                    <img class="mx-auto my-0" src="assets/images/template-logo.png"
+                                                        alt="template-logo" />
+                                                </div>
+                                                <div class="text-xs text-blue-500">
+                                                    image_name.jpg
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="p-4 flex items-center justify-center h-full">
+                                            <div class="text-center">
+                                                <div>
+                                                    <div class="font-bold text-xl mb-1">
+                                                        Drag and drop your file or uppload it here
+                                                    </div>
+                                                    <div class="font-normal text-gray-400 text-sm mb-4">
+                                                        Max 2MB. Supported file formats: JPG, PNG, GIF, and SVG.
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button
+                                                        class="rounded-lg bg-blue-700 hover:bg-blue-900 text-white px-4 pt-1 pb-1.5 flex gap-2 items-center text-sm mx-auto my-0">
+                                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M9.0242 0.1758C9.13668 0.288316 9.19987 0.440901 9.19987 0.6C9.19987 0.759098 9.13668 0.911683 9.0242 1.0242L4.2242 5.8242C4.11168 5.93668 3.9591 5.99987 3.8 5.99987C3.6409 5.99987 3.48832 5.93668 3.3758 5.8242L0.9758 3.4242C0.866505 3.31104 0.806029 3.15948 0.807396 3.00216C0.808763 2.84484 0.871864 2.69435 0.983109 2.58311C1.09435 2.47186 1.24484 2.40876 1.40216 2.4074C1.55948 2.40603 1.71104 2.46651 1.8242 2.5758L3.8 4.5516L8.1758 0.1758C8.28832 0.0633171 8.4409 0.000127792 8.6 0.000127792C8.7591 0.000127792 8.91168 0.0633171 9.0242 0.1758Z"
+                                                                fill="white" />
+                                                        </svg>
+                                                        Upload
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="flex items-center justify-end p-4 space-x-2">
+                                    <button data-modal-hide="defaultModal" type="button"
+                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md text-xs px-4 py-1.5 border border-gray-200 font-medium hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
+                                    <button data-modal-hide="defaultModal" type="button"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-xs px-4 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Select</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -278,7 +539,10 @@
             </div>
         </aside>
     </div>
-    <script src="js/script.js"></script>    
+    <script src="js/script.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/grapesjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/grapesjs-preset-webpage@latest"></script>  
+    <script src="js/grapes.js"></script>  
 </body>
 
 </html>

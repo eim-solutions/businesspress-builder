@@ -1,2 +1,29 @@
 /* styles.css */
 /* Custom styles */
+.gjs-editor-cont .gjs-cv-canvas {
+    width: 100%;
+}
+
+.gjs-editor-cont .gjs-pn-panels {
+    display: none !important;
+}
+
+.gjs-editor-cont .gjs-one-bg {
+    background: none !important;
+}
+
+.gjs-blocks-cs {
+    background: none !important;
+}
+
+.gjs-blocks-cs .gjs-one-bg {
+    background: none !important;
+}
+
+.gjs-two-color {
+    color: #000 !important;
+}
+
+.gjs-blocks-cs .gjs-blocks-c .gjs-block {
+    min-height: 0 !important;
+}
