@@ -1,11 +1,11 @@
 {
-    "name": "businespress-builder",
-    "version": "1.0.0",
-    "description": "My plain HTML+CSS project",
-    "scripts": {
-      "dev": "live-server"
-    },
-    "devDependencies": {
-      "live-server": "^1.2.1"
-    }
+  "name": "businespress-builder",
+  "version": "1.0.0",
+  "description": "My plain HTML+CSS project",
+  "scripts": {
+    "dev": "live-server"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
   }
+}
