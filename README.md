@@ -21,7 +21,7 @@ This repository contains the GrapeJS implementation for BusinessPress CMS. Build
 git clone https://github.com/your-username/businesspress-builder.git
 cd businesspress-builder
 npm install
-
+```
 ## Usage
 
 1. Start the development server
