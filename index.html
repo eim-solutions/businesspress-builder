@@ -75,12 +75,12 @@
         <main class="md:flex-1 w-4/6 overflow-auto">
             <div class="bg-blue-50 p-4">
                 <div class="flex justify-end gap-2 items-center mb-4">
-                    <button
+                    <button id="save-button"
                         class="rounded-lg bg-green-500 hover:bg-green-600 text-white px-4 py-1 flex gap-2 items-center text-sm mr-4">
                         <img src="./assets/svg/check.svg" alt="check" />
                         Save changes
                     </button>
-                    <a href="#" class="text-blue-500 flex gap-2 items-center text-sm">Preview in new tab
+                    <a href="#" id="preview-button" class="text-blue-500 flex gap-2 items-center text-sm">Preview in new tab
                         <img src="./assets/svg/preview.svg" alt="preview" />
                     </a>
                 </div>
@@ -358,11 +358,20 @@
                                     </div>
                                 </div>
                                 <!-- Modal footer -->
-                                <div class="flex items-center justify-end p-4 space-x-2">
-                                    <button data-modal-hide="defaultModal" type="button"
-                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md text-xs px-4 py-1.5 border border-gray-200 font-medium hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
-                                    <button data-modal-hide="defaultModal" type="button"
-                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-xs px-4 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Select</button>
+                                <div class="flex items-center justify-between p-4 space-x-2">
+                                    <div>
+                                        <button type="button" id="removeImageButton"
+                                            class="hidden bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-md text-xs px-4 py-1.5 border border-gray-200 font-medium hover:text-white focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 text-white px-4 pt-1 pb-1.5 flex gap-2 items-center text-sm mx-auto my-0">
+                                            <img src="./assets/svg/deleteIcon.svg" />
+                                            Delete
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center justify-end space-x-2">
+                                        <button data-modal-hide="defaultModal" type="button"
+                                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md text-xs px-4 py-1.5 border border-gray-200 font-medium hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
+                                        <button data-modal-hide="defaultModal" type="button" id="selectImageButton"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-xs px-4 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Select</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -373,11 +382,14 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/grapesjs@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/grapesjs-preset-webpage@latest"></script>  
-    <script src="js/accordion-script.js"></script>
-    <script src="js/image-script.js"></script>
-    <script src="js/modal-script.js"></script>
-    <script src="js/device-script.js"></script>
+    <script src="js/accordion.js"></script>
+    <script src="js/image.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/device.js"></script>
+    <script src="js/save.js"></script>
+    <script src="js/preview.js"></script>
     <script src="js/grapes.js"></script>
+    <script src="js/classes.js"></script>
 </body>
 
 </html>
