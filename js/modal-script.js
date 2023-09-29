@@ -53,9 +53,14 @@ function closeModal() {
 }
 
 // Example: Open the modal when a button is clicked
-document.getElementById("openModalButton").addEventListener("click", openModal);
+//document.getElementById("openModalButton").addEventListener("click", openModal);
+const openModalElement = document.getElementById('openModalButton');
+if (openModalElement) {
+  openModalElement.addEventListener('openModalButton', openModal);
+}
 
 // Example: Close the modal when a button inside the modal is clicked
-document
-  .getElementById("closeModalButton")
-  .addEventListener("click", closeModal);
+const closeModalElements = document.getElementById('closeModalButton');
+if (closeModalElements) {
+  closeModalElements.addEventListener('closeModalButton', closeModal);
+}

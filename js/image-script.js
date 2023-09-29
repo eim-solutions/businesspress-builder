@@ -113,6 +113,10 @@ modalButtons.forEach((button) => {
 });
 
 // Example: Close the modal when a button inside the modal is clicked
-document
-  .getElementById("closeModalButton")
-  .addEventListener("click", closeModal);
+const closeModalElement = document.getElementById('closeModalButton');
+if (closeModalElement) {
+  closeModalElement.addEventListener('closeModalButton', closeModal);
+}
+// document
+//   .getElementById("closeModalButton")
+//   .addEventListener("click", closeModal);
