@@ -117,6 +117,3 @@ const closeModalElement = document.getElementById('closeModalButton');
 if (closeModalElement) {
   closeModalElement.addEventListener('closeModalButton', closeModal);
 }
-// document
-//   .getElementById("closeModalButton")
-//   .addEventListener("click", closeModal);
