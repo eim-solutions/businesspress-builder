@@ -68,6 +68,46 @@
                 <li class="">
                     <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Blog posts</a>
                 </li>
+
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Contents</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Rich text</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">FAQ</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Team</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Careers</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Contacts</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Newsletter</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Call to Action</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Numbers</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Http codes</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Modals</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Cookies</a>
+                </li>
+                <li class="">
+                    <a href="#" class="px-3 py-2 text-sm hover:bg-gray-200 rounded-full inline-block">Footers</a>
+                </li>    
             </ul>
         </aside>
 
@@ -175,7 +215,7 @@
                             </div>
                         </div>
                         <div class="hidden accordion-close mt-3">
-                            <textarea class="resize  rounded-md bg-extraLightGray w-full p-2 focus:outline-none focus:shadow-outline text-extraLightBlue placeholder:text-extraLightBlue" placeholder="Add your text"></textarea>
+                            <textarea id="content-values" class="resize  rounded-md bg-extraLightGray w-full p-2 focus:outline-none focus:shadow-outline text-extraLightBlue placeholder:text-extraLightBlue" placeholder="Add your text"></textarea>
                             <a href="#" class="text-extraLightBlue flex gap-1 items-center text-xs mt-1">
                                 <img src="./assets/svg/writer.svg" /> AI Writer
                             </a>
@@ -185,16 +225,7 @@
                                     class="rounded-md w-full bg-blue-700 hover:bg-blue-900 text-white px-4 py-2 gap-2 text-sm my-2">
                                     Change image
                                 </button>
-                                <div class="bg-extraLightGray p-2 rounded-md flex items-center gap-2">
-                                    <div class="w-2/6">
-                                        <img class="mx-auto my-0" src="assets/images/template-logo.png"
-                                            alt="template-logo" />
-                                    </div>
-                                    <div>
-                                        <div class="text-sm">Image_name.jpg</div>
-                                        <div class="text-xs text-blue-900">Image description</div>
-                                    </div>
-                                </div>
+                                <div id="displayImages"></div>
                             </div>
                         </div>
                     </div>
@@ -299,7 +330,7 @@
                         <div class="hidden accordion-class-close mt-3">
                             <input
                                 class="appearance-none rounded w-full py-2 px-3 text-extraLightBlue leading-tight bg-extraLightGray w-full focus:outline-none focus:shadow-outline placeholder:text-extraLightBlue"
-                                id="username" type="text" placeholder="Add new class">
+                                id="add-custom-classes" name="add-custom-classes" type="text" placeholder="Add new class">
                             <div class="mt-4">
                                 <ul class="custom-classes"></ul>
                             </div>
@@ -369,7 +400,7 @@
                                     <div class="flex items-center justify-end space-x-2">
                                         <button data-modal-hide="defaultModal" type="button"
                                             class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md text-xs px-4 py-1.5 border border-gray-200 font-medium hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Close</button>
-                                        <button data-modal-hide="defaultModal" type="button" id="selectImageButton"
+                                        <button data-modal-hide="defaultModal" type="button" id="selectImages"
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-xs px-4 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Select</button>
                                     </div>
                                 </div>
@@ -390,6 +421,7 @@
     <script src="js/preview.js"></script>
     <script src="js/grapes.js"></script>
     <script src="js/classes.js"></script>
+    <script src="js/content.js"></script>
 </body>
 
 </html>

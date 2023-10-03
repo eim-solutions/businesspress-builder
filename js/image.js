@@ -4,6 +4,7 @@ const selectedFileName = document.getElementById("selectedFileName");
 const errorText = document.getElementById("errorText");
 const dialogContain = document.getElementById("dialogContain");
 const dialogContainData = document.getElementById("dialogContainData");
+const removeImageButton = document.getElementById("removeImageButton");
 
 // Create a hidden input element to handle file selection
 const fileInput = document.createElement("input");
@@ -74,7 +75,20 @@ fileInput.addEventListener("change", () => {
       imageContainer.appendChild(imageElement);
       imageContainer.appendChild(imageNameDiv);
 
-      // Append the container div to dialogContainData
+      // Add a click event listener to select the image
+      imageElement.addEventListener("click", () => {
+        // Remove the 'selected' class from previously selected images (if any)
+        const selectedImages = document.querySelectorAll(".selected");
+        selectedImages.forEach((selected) => {
+          selected.classList.remove("selected");
+        });
+
+        // Add the 'selected' class to the clicked image
+        imageElement.classList.add("selected");
+        // Make the "Remove Selected Image" button visible
+        removeImageButton.classList.remove("hidden");
+      });
+
       dialogContainData.appendChild(imageContainer);
     });
 
@@ -90,6 +104,21 @@ fileInput.addEventListener("change", () => {
 
     selectedFileName.textContent = "";
     errorText.textContent = "";
+  }
+});
+
+// Function to remove the selected image
+removeImageButton.addEventListener("click", () => {
+  // Check if there is a selected image (i.e., an image with a 'selected' class)
+  const selectedImage = document.querySelector(".selected");
+
+  if (selectedImage) {
+    // Remove the selected image container from dialogContainData
+    dialogContainData.removeChild(selectedImage.parentElement);
+    // Update the selected file count
+    selectedFileName.textContent = `Selected Files: ${dialogContainData.children.length}`;
+    // Hide the "Remove Selected Image" button
+    removeImageButton.classList.add("hidden");
   }
 });
 
@@ -113,7 +142,41 @@ modalButtons.forEach((button) => {
 });
 
 // Example: Close the modal when a button inside the modal is clicked
-const closeModalElement = document.getElementById('closeModalButton');
+const closeModalElement = document.getElementById("closeModalButton");
 if (closeModalElement) {
-  closeModalElement.addEventListener('closeModalButton', closeModal);
+  closeModalElement.addEventListener("closeModalButton", closeModal);
 }
+
+
+document.getElementById("selectImages").addEventListener("click", () => {
+  const selectedImageData = document.getElementById("displayImages");
+  // Get a reference to the dialogContainData div
+  const dialogContainData = document.getElementById("dialogContainData");
+
+  // Get all the image elements within dialogContainData
+  const imageElements = dialogContainData.querySelectorAll("img");
+
+  // Loop through the image elements
+  imageElements.forEach((file) => {
+    const imageContainer = document.createElement("div");
+    imageContainer.className =
+      "bg-extraLightGray p-2 rounded-md flex items-center gap-2";
+
+    const imageDiv = document.createElement("div");
+    imageDiv.className = "w-2/6";
+
+    const imageElement = document.createElement("img");
+    imageElement.className = "mx-auto my-0";
+    imageElement.src = file.getAttribute("src");
+    imageElement.alt = file.getAttribute("alt");
+
+    const imageNameDiv = document.createElement("div");
+    imageNameDiv.className = "text-sm text-blue-900";
+    imageNameDiv.textContent = file.alt;
+
+    imageDiv.appendChild(imageElement);
+    imageContainer.appendChild(imageDiv);
+    imageContainer.appendChild(imageNameDiv);
+    selectedImageData.appendChild(imageContainer);
+  });
+});
