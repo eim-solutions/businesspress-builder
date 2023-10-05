@@ -42,12 +42,9 @@ editor.on('component:selected', (event) => {
     const classCollection = event.get('classes');
     
     const classNames = classCollection.models.map(classModel => classModel.get('name'));
-    console.log('classNames: ', classNames);
 
     // Keep track of added class names
     const addedClassNames = new Set(classNames);
-    
-    console.log('addedClassNames: ', addedClassNames);
 
     // Find the existing <ul> element
     const ulElement = document.querySelector('.custom-classes');
@@ -81,14 +78,8 @@ editor.on('component:selected', (event) => {
     inputElement.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
             const classNameToAdd = e.target.value.trim();
-            console.log('classNameToAdd: ', classNameToAdd);
-            console.log('addedClassNames: ', addedClassNames);
-            
-            console.log('!addedClassNames.has(classNameToAdd): ', !addedClassNames.has(classNameToAdd));
 
             if (classNameToAdd && !addedClassNames.has(classNameToAdd)) {
-                
-                console.log('innnnnnnnnnnn');
 
                 const selectedComponent = editor.getSelected();
                 const existingClasses = selectedComponent.getClasses();
