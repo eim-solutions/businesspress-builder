@@ -40,6 +40,9 @@ editor.on('component:selected', (event) => {
     
     const classNames = classCollection.models.map(classModel => classModel.get('name'));
 
+    //link setting
+    linkSetting(editor.getSelected())
+
     // Find the existing <ul> element
     const ulElement = document.querySelector('.custom-classes');
 
@@ -95,3 +98,75 @@ editor.on('component:selected', (event) => {
         }
     });
 });
+
+
+//Link Setting
+
+function linkSetting(selectedComponent) {
+
+    let selectedAnchor = null;
+    const anchorUrlValue = document.getElementById("anchorUrl");
+    const urlTargetValue = document.getElementById("urlTarget");
+
+    // Check if the selected component is an anchor (<a>) element
+    if (selectedComponent && selectedComponent.get("tagName") === "a") {
+        // Update the anchorUrlValue value with the href attribute of the selected <a> element
+        anchorUrlValue.value = selectedComponent.get("attributes").href || "";
+
+        // Check if the target attribute is "_blank"
+        const targetAttribute = selectedComponent.get("attributes").target;
+        urlTargetValue.checked = targetAttribute === "_blank";
+
+        // Store the currently selected anchor element
+        selectedAnchor = selectedComponent;
+
+        // Check if the anchor has an href attribute
+        if (selectedComponent.get("attributes").href) {
+            // Add a class to change the text color to blue
+            selectedAnchor.addClass("text-blue-400 hover:underline");
+        } else {
+            // Remove the class to revert to default text color
+            selectedAnchor.removeClass("text-blue-400 hover:underline");
+        }
+    }
+
+    // Event listener for changes in the anchorUrlValue
+    anchorUrlValue.addEventListener("change", function () {
+        let link = anchorUrlValue.value.trim();
+        if (!link) {
+            // If the input field is empty, set an empty link
+            link = "";
+        } else if (!/^https?:\/\//i.test(link)) {
+            // If the link doesn't start with "http://" or "https://", add "http://" as a default
+            link = "http://" + link;
+        }
+    
+        // Update the href attribute of the selected <a> element (if available)
+        if (selectedAnchor) {
+        
+            const href = link;
+            selectedAnchor.setAttributes({ href });
+        
+            // Check if the anchor has an href attribute
+            if (href) {
+                // Add a class to change the text color to blue
+                selectedAnchor.addClass("text-blue-400 hover:underline");
+            } else {
+                // Remove the class to revert to default text color
+                selectedAnchor.removeClass("text-blue-400 hover:underline");
+            }
+        }
+    });
+    
+    // Event listener for changes in the urlTargetValue
+    urlTargetValue.addEventListener("change", function () {
+
+        if (selectedAnchor) {
+            const href = selectedAnchor.get("attributes").href || "";
+            const target = urlTargetValue.checked ? "_blank" : null;
+            selectedAnchor.setAttributes({ href, target });
+        }
+    });
+
+
+}
