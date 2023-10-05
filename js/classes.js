@@ -1,5 +1,5 @@
 // Define the function to create a list item
-function createListItem(className, ulElement, addedClassNames, selectedComponent) {
+function createListItem(className, ulElement, selectedComponent) {
 
     const liElement = document.createElement('li');
     liElement.className = 'inline-block px-2 py-1 text-xs ml-1.5 text-white bg-extraLightBlue rounded-full cursor-pointer';
@@ -23,9 +23,6 @@ function createListItem(className, ulElement, addedClassNames, selectedComponent
         const updatedClasses = existingClasses.filter(className => className !== classNameToRemove);
         selectedComponent.setClass(updatedClasses);
 
-        // Remove the class name from the addedClassNames set
-        addedClassNames.delete(classNameToRemove);
-
         // Remove the list item from the DOM
         ulElement.removeChild(e.target.parentElement);
     });
@@ -43,9 +40,6 @@ editor.on('component:selected', (event) => {
     
     const classNames = classCollection.models.map(classModel => classModel.get('name'));
 
-    // Keep track of added class names
-    const addedClassNames = new Set(classNames);
-
     // Find the existing <ul> element
     const ulElement = document.querySelector('.custom-classes');
 
@@ -54,7 +48,7 @@ editor.on('component:selected', (event) => {
 
     // Iterate through the class names and create <li> elements
     classNames.forEach(className => {
-        const liElement = createListItem(className, ulElement, addedClassNames, editor.getSelected());
+        const liElement = createListItem(className, ulElement, editor.getSelected());
         ulElement.appendChild(liElement);
     });
 
@@ -79,20 +73,21 @@ editor.on('component:selected', (event) => {
         if (e.key === 'Enter') {
             const classNameToAdd = e.target.value.trim();
 
-            if (classNameToAdd && !addedClassNames.has(classNameToAdd)) {
+            if (classNameToAdd) {
 
                 const selectedComponent = editor.getSelected();
                 const existingClasses = selectedComponent.getClasses();
-
-                // Add the new class to the existing classes
-                existingClasses.push(classNameToAdd);
-
-                // Set the updated classes to the selected component
-                selectedComponent.setClass(existingClasses);
-
-                const liElement = createListItem(classNameToAdd, ulElement, addedClassNames, selectedComponent);
-                ulElement.appendChild(liElement);
-                addedClassNames.add(classNameToAdd);
+                // Check if the class already exists
+                if (!existingClasses.includes(classNameToAdd)) { 
+                    // Add the new class to the existing classes
+                    existingClasses.push(classNameToAdd);
+    
+                    // Set the updated classes to the selected component
+                    selectedComponent.setClass(existingClasses);
+    
+                    const liElement = createListItem(classNameToAdd, ulElement, selectedComponent);
+                    ulElement.appendChild(liElement);
+                }
                 e.target.value = '';
             } else {
                 e.target.value = '';
