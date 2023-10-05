@@ -202,8 +202,8 @@
             <div>
                 <div class="max-w-lg mx-auto">
                     <!-- Accordion Item 1 -->
-                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
-                        <div class="flex items-center gap-2 cursor-pointer accordion-open h-8">
+                    <div class="rounded-none accordion-class py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center gap-2 cursor-pointer accordion-class-open h-8">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -214,7 +214,7 @@
                                 <h2 class="text-xs font-medium text-gray-500">Content</h2>
                             </div>
                         </div>
-                        <div class="hidden accordion-close mt-3">
+                        <div class="hidden accordion-class-close mt-3">
                             <textarea id="content-values" class="resize  rounded-md bg-extraLightGray w-full p-2 focus:outline-none focus:shadow-outline text-extraLightBlue placeholder:text-extraLightBlue" placeholder="Add your text"></textarea>
                             <a href="#" class="text-extraLightBlue flex gap-1 items-center text-xs mt-1">
                                 <img src="./assets/svg/writer.svg" /> AI Writer
@@ -231,8 +231,8 @@
                     </div>
 
                     <!-- Accordion Item 2 -->
-                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
-                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-open h-8">
+                    <div class="rounded-none accordion-class py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-class-open h-8">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -241,36 +241,16 @@
                                         d="M19 9l-7 7-7-7"></path>
                                 </svg>
                                 <h2 class="text-xs font-medium text-gray-500">
-                                    Anchor
+                                    Link
                                 </h2>
                             </div>
                             </button>
                         </div>
-                        <div class="hidden accordion-close mt-3">
+                        <div class="hidden accordion-class-close mt-3">
                             <input
                                 class="appearance-none rounded w-full py-2 px-3 text-extraLightBlue leading-tight bg-extraLightGray w-full focus:outline-none focus:shadow-outline placeholder:text-extraLightBlue"
-                                id="username" type="text" placeholder="#">
-                        </div>
-                    </div>
-
-                    <!-- Accordion Item 3 -->
-                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
-                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-open h-8">
-                            <div class="flex items-center gap-2">
-                                <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                                <h2 class="text-xs font-medium text-gray-500">
-                                    Link settings
-                                </h2>
-                            </div>
-                            </button>
-                        </div>
-                        <div class="hidden accordion-close mt-3">
-                            <div class="text-xs text-extraLightBlue mb-3">Open in a new page (_blank)</div>
+                                id="username" type="text" placeholder="Add your url">
+                            <div class="text-xs text-extraLightBlue my-3">Open in a new page (_blank)</div>
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer">
                                 <div
@@ -280,9 +260,10 @@
                         </div>
                     </div>
 
-                    <!-- Accordion Item 4 -->
-                    <div class="rounded-none accordion py-3 px-4 border-b border-gray-200">
-                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-open h-8">
+                    <!-- Accordion Item 3 -->
+                    
+                    <div class="rounded-none accordion-class py-3 px-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between gap-2 cursor-pointer accordion-class-open h-8">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 transition-transform transform rotate-0 text-gray-600"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -296,7 +277,7 @@
                             </div>
                             </button>
                         </div>
-                        <div class="hidden accordion-close mt-3">
+                        <div class="hidden accordion-class-close mt-3">
                             <div class="text-xs text-extraLightBlue mb-3">Hide | Show element</div>
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer">
