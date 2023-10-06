@@ -43,6 +43,9 @@ editor.on('component:selected', (event) => {
     //link setting
     linkSetting(event);
 
+    //visibility Setting
+    visibilitySetting();
+
     // Find the existing <ul> element
     const ulElement = document.querySelector('.custom-classes');
 
@@ -101,7 +104,6 @@ editor.on('component:selected', (event) => {
 
 
 //Link Setting
-
 function linkSetting(selectedComponent) {
 
   const anchorUrlValue = document.getElementById("anchorUrl");
@@ -124,12 +126,17 @@ function linkSetting(selectedComponent) {
   // Event listener for changes in the anchorUrlValue
   anchorUrlValue.addEventListener("change", function () {
 
-    const link = anchorUrlValue.value.trim();
+    let link = anchorUrlValue.value.trim();
     const selectedComponent = editor.getSelected(); // Get the currently selected component
 
-    if (!link || !selectedComponent) {
-      return;
+     if (!link || !selectedComponent) {
+      // If the input field is empty, set an empty link
+      link = "";
+    } else if (!/^https?:\/\//i.test(link)) {
+      // If the link doesn't start with "http://" or "https://", add "http://" as a default
+      link = "http://" + link;
     }
+
     // Update the href attribute of the selected anchor element (if available)
     if (selectedComponent.get("tagName") === "a") {
      
@@ -156,6 +163,26 @@ function linkSetting(selectedComponent) {
       const href = selectedComponent.get("attributes").href || "";
       const target = this.checked ? "_blank" : null;
       selectedComponent.setAttributes({ href, target });
+    }
+  });
+}
+
+//visibility Setting
+function visibilitySetting() {
+  // Find the checkbox element associated with the selected component
+  const visibilityTarget = document.getElementById("visibilityToggle");
+
+  // Clear the checkbox by setting its 'checked' property to false
+  visibilityTarget.checked = false;
+
+  // Add an event listener to the checkbox to toggle visibility
+  visibilityTarget.addEventListener("change", (e) => {
+    const selectedComponent = editor.getSelected();
+    // Toggle the "hidden" class based on the checkbox state
+    if (e.target.checked) {
+      selectedComponent.addClass("hidden");
+    } else {
+      selectedComponent.removeClass("hidden");
     }
   });
 }
