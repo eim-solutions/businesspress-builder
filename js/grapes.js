@@ -47,6 +47,11 @@ editor.on("component:drag:end", () => {
 });
 
 function shouldUndo(editor, selectedComponent) {
+
+    if (!selectedComponent) {
+        // Handle the case when selectedComponent is undefined.
+        return;
+    }
     const um = editor.UndoManager;
     const selectedParentComponent = selectedComponent.parent();
   

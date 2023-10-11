@@ -6,6 +6,9 @@ accordions.forEach((accordion) => {
 
   toggle.addEventListener("click", () => {
     content.classList.toggle("hidden");
-    toggle.querySelector("svg").classList.toggle("rotate-180");
+    const svg = toggle.querySelector("svg");
+    if (svg) {
+      svg.classList.toggle("rotate-180");
+    }
   });
 });
