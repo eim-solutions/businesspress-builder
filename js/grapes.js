@@ -41,7 +41,7 @@ editor.on("block:drag:stop", model => {
     shouldUndo(editor, selectedComponent);
 });
   
-editor.on("update", () => {
+editor.on("component:drag:end", () => {
     const selectedComponent = editor.getSelected();
     shouldUndo(editor, selectedComponent);
 });
