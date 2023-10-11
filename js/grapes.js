@@ -36,36 +36,27 @@ editor.BlockManager.add('navigations-left-block', {
     content: '<section class="bg-white rounded-lg flex justify-between gap-2 items-center p-4 border border-2 border-gray-300 hover:border-blue-700 cursor-pointer"> <div class="flex gap-6 items-center"> <img src="./assets/svg/business-press.svg" alt="business-press" /> <div class="flex justify-between gap-5 items-center text-xs"> <a href="">Menu item</a> <a href="">Menu item</a> <a href="">Menu item</a> <a href="">Menu item</a> <a href="">Menu item</a> </div> </div> <div> <button class="rounded-full bg-blue-700 hover:bg-blue-900 text-white px-4 py-1 gap-2 text-[10px] mx-auto my-0"> Contact Us </button> </div> </section>',
 });
 
-editor.on("block:drag:stop", function (model) {
+editor.on("block:drag:stop", model => {
     const selectedComponent = editor.select(model).editor.getSelected();
-    //overlapping
-    shouldUndo(selectedComponent)
+    shouldUndo(editor, selectedComponent);
 });
   
-editor.on("update", (e) => {
+editor.on("update", () => {
     const selectedComponent = editor.getSelected();
-    //overlapping
-    shouldUndo(selectedComponent)
+    shouldUndo(editor, selectedComponent);
 });
 
-//overlapping section
-function shouldUndo(selectedComponent) {
+function shouldUndo(editor, selectedComponent) {
     const um = editor.UndoManager;
-    let selectedParentComponent = selectedComponent.parent();
-    if (
-      selectedParentComponent.attributes.tagName === "section" &&
-      selectedComponent.attributes.tagName === "section"
-    ) {
+    const selectedParentComponent = selectedComponent.parent();
+  
+    if (selectedComponent.attributes.tagName === "section" && selectedParentComponent.attributes.tagName === "section") {
       um.undo();
     } else if (selectedComponent.attributes.tagName === "section") {
-      let tempArray = selectedComponent.parents();
-      if (tempArray?.length > 0) {
-        let findParentSection = tempArray.find(
-          (cv) => cv?.attributes.tagName === "section"
-        );
-        if (findParentSection) {
-          um.undo();
-        }
+      const tempArray = selectedComponent.parents();
+      const findParentSection = tempArray?.find(cv => cv?.attributes.tagName === "section");
+      if (findParentSection) {
+        um.undo();
       }
     }
 }
