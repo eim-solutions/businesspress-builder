@@ -178,11 +178,13 @@ function visibilitySetting() {
   // Add an event listener to the checkbox to toggle visibility
   visibilityTarget.addEventListener("change", (e) => {
     const selectedComponent = editor.getSelected();
-    // Toggle the "hidden" class based on the checkbox state
-    if (e.target.checked) {
-      selectedComponent.addClass("hidden");
-    } else {
-      selectedComponent.removeClass("hidden");
+    if(selectedComponent.attributes.tagName !== "section" && selectedComponent.attributes.tagName !== "body"){ 
+      // Toggle the "hidden" class based on the checkbox state
+      if (e.target.checked) {
+        selectedComponent.addClass("hidden");
+      } else {
+        selectedComponent.removeClass("hidden");
+      }
     }
   });
 }
