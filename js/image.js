@@ -123,29 +123,42 @@ removeImageButton.addEventListener("click", () => {
 });
 
 // JavaScript code to open the modal and backdrop
-function openModal() {
-  document.getElementById("defaultModal").classList.remove("hidden");
+function openFileModal() {
+  document.getElementById("fileUploadModal").classList.remove("hidden");
   document.getElementById("modalBackdrop").classList.remove("hidden");
   showUploadModal(); // Show Modal body 1 initially
 }
 
+// Listen for button click to open the modal
+const openModalButton = document.querySelector(
+  '[data-modal-toggle="fileUploadModal"]'
+);
+openModalButton.addEventListener("click", openFileModal);
+
+const fileGetModal = document.getElementById("fileUploadModal");
+const closeModalButtons = document.querySelectorAll(
+  '[data-modal-hide="fileUploadModal"]'
+);
+
+// Event listeners to close the modal when close buttons are clicked
+closeModalButtons.forEach((button) => {
+  button.addEventListener("click", closeFileModal);
+});
+
+// Event listener to close the modal when clicking outside the modal
+fileGetModal.addEventListener("click", (event) => {
+  if (event.target === fileGetModal) {
+    closeFileModal();
+  }
+});
+
 // JavaScript code to close the modal and backdrop
-function closeModal() {
-  document.getElementById("defaultModal").classList.add("hidden");
+function closeFileModal() {
+  document.getElementById("fileUploadModal").classList.add("hidden");
   document.getElementById("modalBackdrop").classList.add("hidden");
 }
 
-// Listen for button click to open the modal
-const modalButtons = document.querySelectorAll("[data-modal-toggle]");
-modalButtons.forEach((button) => {
-  button.addEventListener("click", openModal);
-});
 
-// Example: Close the modal when a button inside the modal is clicked
-const closeModalElement = document.getElementById("closeModalButton");
-if (closeModalElement) {
-  closeModalElement.addEventListener("closeModalButton", closeModal);
-}
 
 
 document.getElementById("selectImages").addEventListener("click", () => {
