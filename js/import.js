@@ -9,6 +9,13 @@ function openModalImport() {
     const code = editor.getHtml();
     const importCodePopup = document.getElementById('importCode');
     importCodePopup.innerText = code; 
+
+    document.getElementById('importButton').addEventListener("click", function() {
+        const importedCode = importCodePopup.value;
+        editor.setComponents(importedCode.trim());
+        closeModalImportCode();
+    });
+
 }
 
 const closeImportModal = document.querySelectorAll('[data-modal-hide="importModal"]');
