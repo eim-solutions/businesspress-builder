@@ -22,6 +22,7 @@ const editor = grapesjs.init({
         type: "local", // Use local storage as the storage type
         stepsBeforeSave: 1, // Number of steps/actions before saving to local storage
     }, // You can configure storage options as needed
+    plugins: ['grapesjs-custom-code']
     // plugins: ['grapesjs-preset-webpage'], // Include any additional plugins you need
 
 });
