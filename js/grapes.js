@@ -9,6 +9,12 @@ const editor = grapesjs.init({
     styleManager: { // Configure the Style Manager
         clearProperties: 1,
     },
+    layerManager: {
+        appendTo: '#layers-container'
+    },
+    traitManager: {
+        appendTo: '#traits-container',
+    },
     blockManager: {
         appendTo: "#block",
     },
