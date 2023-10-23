@@ -27,3 +27,16 @@
 .gjs-blocks-cs .gjs-blocks-c .gjs-block {
     min-height: 0 !important;
 }
+
+#traits-container .gjs-one-bg , #layers-container .gjs-one-bg {
+    background-color: transparent !important;
+}
+#traits-container .gjs-field{
+    background-color: #F6F9FF;
+}
+#traits-container .gjs-label{
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+    font-weight: 500;
+}
+
